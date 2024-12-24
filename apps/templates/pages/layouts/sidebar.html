@@ -1,0 +1,90 @@
+{% load static i18n %}
+
+<div class="sidebar">
+  <!-- Logo Section -->
+  <div class="sidebar-logo">
+    <a href="{% url 'home' %}">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" />
+    </a>
+  </div>
+
+  <!-- Page Management Section -->
+  <div class="current-page current-page--home">
+    <div class="card shadow-sm text-center p-4 border border-success position-relative">
+      <!-- Label "Active" -->
+      <span class="label-active badge bg-success position-absolute top-0 start-0 mt-2 ms-2">
+        Active
+      </span>
+      <div class="mb-3">
+        <img src="{{ fb_page.icon.url|default:'{% static "images/default-avatar.png" %}' }}"
+             alt="Page Icon" class="page-icon" />
+      </div>
+      <h5 class="mb-3">{{ fb_page.name }}</h5>
+      <a href="{% url 'fb_pages:home' %}" class="btn btn-primary btn-block">
+        Change Page
+      </a>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <ul class="nav-list">
+      <li>
+        <a href="{% url 'home' %}" class="nav-link {% if active_menu == 'home' %}active{% endif %}">
+          <i class="fas fa-home"></i> Home
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'contacts:contact-list' %}" class="nav-link {% if active_menu == 'contacts' %}active{% endif %}">
+          <i class="fas fa-address-book"></i> Contacts
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'automation' %}" class="nav-link {% if active_menu == 'automation' %}active{% endif %}">
+          <i class="fas fa-robot"></i> Automation
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'live_chats:home' %}" class="nav-link {% if active_menu == 'live_chats' %}active{% endif %}">
+          <i class="fas fa-comments"></i> Live Chat
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'broadcasting' %}" class="nav-link {% if active_menu == 'broadcasting' %}active{% endif %}">
+          <i class="fas fa-broadcast-tower"></i> Broadcasting
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'ads' %}" class="nav-link {% if active_menu == 'ads' %}active{% endif %}">
+          <i class="fas fa-ad"></i> Ads
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'fb_pages:home' %}" class="nav-link {% if active_menu == 'fb_pages' %}active{% endif %}">
+          <i class="fab fa-facebook-square"></i> Facebook Pages
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'settings' %}" class="nav-link {% if active_menu == 'settings' %}active{% endif %}">
+          <i class="fas fa-cog"></i> Settings
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Footer Menu -->
+  <div class="sidebar-footer">
+    <ul class="footer-list">
+      <li>
+        <a href="{% url 'profile' %}" class="footer-link">
+          <i class="fas fa-user"></i> My Profile
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'help' %}" class="footer-link">
+          <i class="fas fa-question-circle"></i> Help
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

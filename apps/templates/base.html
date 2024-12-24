@@ -1,0 +1,48 @@
+{% load static i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DurianChat{% endblock title %}</title>
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+    {% block css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="{% static 'css/layout.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/sidebar.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+    {% endblock css %}
+  </head>
+  <body>
+    <div class="layout-container">
+      {% block sidebar %}
+        {% include "pages/layouts/sidebar.html" %}
+      {% endblock sidebar %}
+
+      <div class="main-content">
+        {% block navbar %}
+          {% include "pages/layouts/navbar.html" %}
+        {% endblock navbar %}
+
+        <div class="content">
+          {% block content %}
+          <p>Use this document as a way to quick start any new project.</p>
+          {% endblock content %}
+        </div>
+
+        {% block footer %}
+          {% include "pages/layouts/footer.html" %}
+        {% endblock footer %}
+      </div>
+    </div>
+
+    {% block javascript %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/project.js' %}"></script>
+    {% endblock javascript %}
+  </body>
+</html>

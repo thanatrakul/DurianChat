@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Manage Your Facebook Pages
+{% endblock %}
+
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'fb_pages/fb_pages.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block content %}
+<div class="container mt-4 fb-pages-container">
+  <!-- Header -->
+  <div class="header-section text-center mb-4">
+      <h1 class="text-primary">Manage Your Facebook Pages</h1>
+      <p class="text-muted">Easily activate or switch between your connected pages.</p>
+  </div>
+
+  <!-- Page Boxes -->
+  <div class="page-boxes">
+    {% for page in pages %}
+    <div class="page-box {% if page.is_active %}selected{% endif %}">
+      <!-- Page Icon -->
+      <img src="{{ page.icon.url|default_if_none:'static/images/default-icon.png' }}" alt="{{ page.name }} Icon" class="page-icon" />
+
+      <!-- Page Name -->
+      <span class="page-name">{{ page.name }}</span>
+
+      <!-- Action Button -->
+      <a href="{% url 'fb_pages:activate_page' page.id %}" class="page-select-button {% if page.is_active %}btn-success{% else %}btn-primary{% endif %}">
+        {% if page.is_active %}View Detail{% else %}Select{% endif %}
+      </a>
+    </div>
+    {% endfor %}
+
+    <!-- Add New Page Box -->
+    <div class="page-box add-page-box">
+      <div class="icon-placeholder">
+        <i class="fas fa-plus"></i>
+      </div>
+      <a href="{% url 'fb_pages:add_page' %}" class="page-select-button btn-primary">Add Page</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

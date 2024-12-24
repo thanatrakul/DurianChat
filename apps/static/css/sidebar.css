@@ -1,0 +1,173 @@
+/* Sidebar Layout */
+.sidebar {
+  --sidebar-bg: #f7f7f7;
+  --sidebar-text: #333;
+  --active-bg: #004494;
+  --hover-bg: rgba(0, 68, 148, 0.1);
+
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Logo */
+.sidebar-logo {
+  background-color: rgb(28, 177, 106);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.sidebar-logo img {
+  max-width: 70px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Page Management Section */
+.current-page--home {
+  margin: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid #28a745; /* กรอบสีเขียว */
+  position: relative;
+}
+
+.current-page--home .page-icon {
+  max-width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.current-page--home h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.current-page--home .btn {
+  background-color: #004494;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.current-page--home .btn:hover {
+  background-color: #002a6d;
+  transform: translateY(-2px);
+}
+
+/* Label "Active" */
+.label-active {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #28a745; /* สีเขียวของ Label */
+}
+
+/* Navigation Menu */
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--sidebar-text);
+  padding: 12px 20px;
+  border-radius: 8px; /* เพิ่มความโค้ง */
+  font-size: 14px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background-color: var(--hover-bg);
+  color: #004494;
+}
+
+/* Active Menu */
+.nav-link.active, .footer-link.active {
+  background: linear-gradient(to right, #004494, #28a745); /* Gradient Background */
+  color: #fff; /* Text Color */
+  font-weight: bold;
+  padding: 10px 20px; /* ปรับ Padding ให้สมดุล */
+  border-radius: 8px; /* ขอบโค้งมน */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow */
+  display: flex;
+  align-items: center; /* ไอคอนและข้อความจัดตรงกลาง */
+  position: relative;
+}
+
+.nav-link.active::before, .footer-link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px; /* ปรับความหนา */
+  height: 90%; /* ความสูงของแถบ */
+  background-color: #ffd700; /* Highlight สีเหลือง */
+  border-radius: 3px; /* เพิ่มความโค้งมนให้แถบ */
+}
+
+/* Icon Alignment */
+.nav-link i {
+  margin-right: 10px; /* เว้นช่องว่างระหว่างไอคอนกับข้อความ */
+  font-size: 1.2rem; /* ขนาดไอคอน */
+}
+
+/* Footer Menu */
+.sidebar-footer {
+  border-top: 1px solid #ddd;
+  padding: 0; /* ลบ Padding ที่ไม่จำเป็น */
+  margin-top: auto;
+  background-color: #f9f9f9;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0; /* ลบ Padding ของรายการ */
+  margin: 0;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--sidebar-text);
+  display: flex;
+  align-items: center;
+  padding: 12px 20px; /* ใช้ค่าเดียวกับ .nav-link */
+  border-radius: 8px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.footer-link i {
+  margin-right: 10px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+  font-size: 1.2rem;
+}
+
+.footer-link:hover {
+  background-color: var(--hover-bg);
+  color: #004494;
+}

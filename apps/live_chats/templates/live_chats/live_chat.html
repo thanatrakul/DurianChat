@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}
+    Live Chat - {{ fb_page.name }}
+{% endblock %}
+
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'live_chats/live_chats.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block content %}
+<div class="live-chat-layout">
+  <!-- Sidebar -->
+  <div class="conversation-list">
+    <h3>Conversations</h3>
+    <div class="filter">
+      <span class="active" data-status="open">Open (2)</span>
+      <span data-status="closed">Closed (1)</span>
+      <span data-status="all">All (3)</span>
+    </div>
+    <input type="text" id="search-conversations" placeholder="Search conversations..." />
+    <ul id="conversation-list">
+      <li class="conversation" data-status="open">
+        <img src="{% static 'images/default-avatar.png' %}" alt="User">
+        <div class="details">
+          <span class="name">John Doe</span>
+          <span class="time">0 min</span>
+          <span class="badge">2</span>
+        </div>
+      </li>
+      <li class="conversation" data-status="closed">
+        <img src="{% static 'images/default-avatar.png' %}" alt="User">
+        <div class="details">
+          <span class="name">Jane Smith</span>
+          <span class="time">1h</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Chat Window -->
+  <div class="chat-window">
+    <div class="chat-header">Chat with John Doe</div>
+    <div class="chat-messages">
+      <div class="loading">Loading older messages...</div>
+      <div class="message admin">
+        <p>Hello, how can I help you?</p>
+        <span class="time">10:00 AM</span>
+      </div>
+      <div class="message user">
+        <p>I have a question about your product.</p>
+        <span class="time">10:01 AM</span>
+      </div>
+    </div>
+    <div class="chat-input">
+      <textarea id="message-input" placeholder="Type your message..."></textarea>
+      <button class="emoji-picker-button">
+        <i class="fas fa-smile"></i>
+      </button>
+      <button class="send-button">Send</button>
+    </div>
+  </div>
+
+  <!-- User Info Panel -->
+  <div class="user-info">
+    <h3>John Doe</h3>
+    <p><strong>Status:</strong> Subscribed</p>
+    <p><strong>Language:</strong> English</p>
+    <p><strong>Contact Time:</strong> 01:43 (UTC+7)</p>
+    <button class="automation-button">Pause Automations</button>
+    <h4>Notes</h4>
+    <div class="notes">
+      <div class="note">
+        <p>Note: Some important details.</p>
+        <button class="edit-note">Edit</button>
+        <button class="delete-note">Delete</button>
+      </div>
+      <div class="note">
+        <p>Note: Follow up on this conversation.</p>
+        <button class="edit-note">Edit</button>
+        <button class="delete-note">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script src="{% static 'live_chats/live_chats.js' %}"></script>
+{% endblock javascript %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - DurianChat{% endblock title %}
+
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'home/home.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block content %}
+<div class="home-page container mt-4">
+    <!-- Section Header -->
+    <div class="page-header text-center mb-4">
+        <h1 class="text-primary">Welcome, {{ user.username|default:"Guest" }}</h1>
+        <p class="text-muted">Manage your Facebook pages seamlessly with DurianChat</p>
+    </div>
+
+    <!-- Facebook Page Display -->
+    <div class="page-box-container d-flex justify-content-center flex-wrap mt-4">
+        {% if fb_page %}
+        <div class="page-card shadow-sm p-4 rounded">
+            <!-- Page Icon -->
+            <div class="page-card__icon mb-3">
+                <img src="{{ fb_page.icon.url|default_if_none:'{% static "images/default-icon.png" %}' }}"
+                     alt="{{ fb_page.name }}"
+                     class="img-fluid rounded-circle" />
+            </div>
+
+            <!-- Page Name -->
+            <h5 class="page-card__name text-primary mb-3">{{ fb_page.name }}</h5>
+
+            <!-- Page Description -->
+            <p class="text-muted">Your connected page for managing posts and messages.</p>
+
+            <!-- Action Button -->
+            <a href="{% url 'fb_pages:home' %}" class="btn btn-outline-primary btn-lg mt-3 w-100">
+                Manage Page
+            </a>
+        </div>
+        {% else %}
+        <div class="page-card shadow-sm p-4 rounded text-center">
+            <!-- Placeholder for No Page -->
+            <div class="page-card__icon-placeholder mb-3">
+                <i class="fas fa-folder-open fa-3x text-muted"></i>
+            </div>
+            <h5 class="page-card__name text-muted mb-3">No Page Selected</h5>
+            <p class="text-muted">Connect a Facebook page to start managing your content.</p>
+            <a href="{% url 'fb_pages:home' %}" class="btn btn-primary btn-lg mt-3 w-100">
+                Select a Page
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contacts - DurianChat{% endblock title %}
+
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'contacts/contacts.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block content %}
+<div class="contacts container mt-4">
+    <!-- Section Header -->
+    <div class="contacts__header text-center mb-4">
+        <h1 class="contacts__title text-primary">Your Contacts</h1>
+        <p class="contacts__subtitle text-muted">Manage and view all your contacts here.</p>
+    </div>
+
+    <!-- Contact List -->
+    <div class="contacts__list">
+        {% if contacts %}
+        <ul class="contacts__list-container">
+            {% for contact in contacts %}
+            <li class="contacts__list-item">
+                <div class="contacts__avatar">
+                    <img src="{{ contact.profile_picture|default:'static/images/default-avatar.png' }}" alt="{{ contact.name }}" />
+                </div>
+                <div class="contacts__info">
+                    <h5 class="contacts__name">{{ contact.name }}</h5>
+                    <p class="contacts__last-message text-muted">Last Message: {{ contact.last_message|default:"No messages yet" }}</p>
+                    <p class="contacts__last-contacted text-muted">Last Contacted: {{ contact.last_contacted|date:"M d, Y H:i" }}</p>
+                </div>
+                <div class="contacts__actions">
+                    <a href="{% url 'contacts:contact-detail' contact.id %}" class="contacts__button contacts__button--primary">View</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="contacts__empty text-center">
+            <p class="text-muted">No contacts found. Please select a Facebook page or add new contacts.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

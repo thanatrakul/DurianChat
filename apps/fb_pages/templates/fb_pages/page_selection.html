@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-selection">
+  <h2>Select a Page</h2>
+  <div class="page-list">
+    {% for page in pages %}
+    <div class="page-item">
+      <img src="{% static page.icon %}" alt="{{ page.name }}" class="page-icon" />
+      <span class="page-name">{{ page.name }}</span>
+      <a href="?page={{ page.id }}" class="btn {% if page.id == current_page.id %}btn-success{% else %}btn-primary{% endif %}">
+        {% if page.id == current_page.id %}Selected{% else %}Select{% endif %}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

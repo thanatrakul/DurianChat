@@ -1,0 +1,9 @@
+/* General Icon Styling */
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.nav-link i {
+  font-size: 1.2rem;
+}

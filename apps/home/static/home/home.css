@@ -1,0 +1,52 @@
+/* Page Card Layout */
+.page-card {
+  width: 300px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef); /* เพิ่ม Gradient */
+  border: 1px solid #dee2e6; /* เพิ่มขอบ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow แบบลึก */
+}
+
+.page-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Shadow ที่เด่นขึ้นเมื่อ Hover */
+}
+
+/* Page Card Header */
+.page-card__name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #004494; /* ใช้สีธีม */
+}
+
+/* ปรับปุ่มให้เด่น */
+.btn {
+  background-color: #004494; /* สีพื้นหลังของปุ่ม */
+  color: #fff; /* สีข้อความ */
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #002a6d; /* สีเข้มขึ้นเมื่อ Hover */
+  transform: translateY(-2px);
+}
+
+/* Icon Styling */
+.page-card__icon img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #004494; /* ขอบไอคอน */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Placeholder Icon */
+.page-card__icon-placeholder {
+  font-size: 3rem;
+  color: #adb5bd; /* สีที่อ่อนลง */
+}

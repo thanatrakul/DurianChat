@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contacts - DurianChat{% endblock title %}
+
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'contacts/contacts.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block content %}
+    <h1>Contact Detail</h1>
+    <p><strong>Name:</strong> {{ contact.name }}</p>
+    <p><strong>Email:</strong> {{ contact.email }}</p>
+    <p><strong>Phone:</strong> {{ contact.phone }}</p>
+    <p><strong>Facebook ID:</strong> {{ contact.facebook_id }}</p>
+    <p><strong>Created At:</strong> {{ contact.created_at }}</p>
+{% endblock content %}

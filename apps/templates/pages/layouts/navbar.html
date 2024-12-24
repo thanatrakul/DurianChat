@@ -1,0 +1,14 @@
+{% load static i18n %}
+
+<div class="navbar">
+  <h1 class="navbar-title">{{ page_title|default:"DurianChat" }}</h1>
+  <div class="dropdown">
+    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Options
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+      <li><a class="dropdown-item" href="{% url 'settings' %}">Settings</a></li>
+    </ul>
+  </div>
+</div>
